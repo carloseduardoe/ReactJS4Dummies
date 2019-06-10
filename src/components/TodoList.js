@@ -10,9 +10,9 @@ class TodoList extends Component {
       <div>
        <h1>Hello {this.props.name}!</h1>
        <ol>
-         {this.props.todos.map((item, i) => {
-          return <li key={i}>{item.title} - {item.completed ? "done" : "not completed"}</li>
-         })}
+          {this.props.todos.map((item, i) => 
+            <li key={i}>{item.title} - {item.completed ? "done" : "not completed"}</li>
+          )}
        </ol>
       </div>
     );
