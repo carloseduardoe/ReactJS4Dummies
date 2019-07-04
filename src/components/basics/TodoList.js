@@ -14,7 +14,7 @@ class TodoList extends Component {
 
     return (
       <div>
-        <h1>Hello {name}!</h1>
+        <h6>Hello {name}!</h6>
         <ol>{todos}</ol>
       </div>
     );
