@@ -28,6 +28,7 @@ import ButtonClicks from './components/advanced/RenderProps/ButtonClicks';
 import ElementHover from './components/advanced/RenderProps/ElementHover';
 import Context from './components/advanced/Context';
 */
+import ReactHTTP from './components/advanced/ReactHTTP';
 
 export default class App extends Component {
   constructor(props) {
@@ -94,6 +95,7 @@ export default class App extends Component {
           </RenderProps>
           <Context />
         */}
+        <ReactHTTP/>
       </div>
     );
   }
