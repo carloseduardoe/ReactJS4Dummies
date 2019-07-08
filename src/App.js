@@ -26,6 +26,7 @@ import HigherOrder from './components/advanced/HigherOrder';
 import RenderProps from './components/advanced/RenderProps';
 import ButtonClicks from './components/advanced/RenderProps/ButtonClicks';
 import ElementHover from './components/advanced/RenderProps/ElementHover';
+import Context from './components/advanced/Context';
 */
 
 export default class App extends Component {
@@ -91,6 +92,7 @@ export default class App extends Component {
           <RenderProps start={0} increment={5} create={(position, incrementCount) =>
             <ElementHover position={position} incrementCount={incrementCount} />}>
           </RenderProps>
+          <Context />
         */}
       </div>
     );
