@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './assets/styles/App.scss';
 
 /* // basics
 import TodoList from './components/basics/TodoList';
@@ -50,7 +51,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className="App">
+      <div>
         {/* // basics
           <TodoList name="Carlos" todos={this.state.todos} /><br />
           <Hello name="Carlos" />

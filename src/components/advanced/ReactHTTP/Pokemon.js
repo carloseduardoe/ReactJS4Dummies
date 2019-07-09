@@ -6,8 +6,18 @@ export default class Pokemon extends Component {
         this.state = {};
     }
     
-    buidStats = (stats) => {
-
+    buildStats = (stats) => {
+        if (!stats || !stats.length)
+            return;
+        
+        return <table>
+            <thead><tr><td colSpan="2">Statistics</td></tr></thead>
+            <tbody>{stats.map((item, index) =>
+                <tr key={index}>
+                    <td>{item.stat.name}</td><td>{item.base_stat}</td>
+                </tr>
+            )}</tbody>
+        </table>;
     }
 
     buildFromData = (name, data, nested, nestedProperty) => {
@@ -19,24 +29,25 @@ export default class Pokemon extends Component {
 
         return <div>
             <h5>{name}</h5>
-            <ol>{data.map((item, index) =>
+            <ul>{data.map((item, index) =>
                 <li key={index}><a href={item.url}>{item.name}</a></li>
-            )}</ol>
+            )}</ul>
         </div>;
     }
 
     render() {
         const pokemon = { ...this.props.pokemon };
-        console.log(pokemon);
-        return pokemon ? <div>
+        return pokemon ? <div className="pokemon_container">
             <h4>{pokemon.name}</h4>
+            <h5>base experience: {pokemon.base_experience}</h5>
             <img src={pokemon.sprites.front_default} alt="Pokemon"/>
-            <p>Base experience: {pokemon.base_experience}</p>
-            {/* this.buildStats("Stats", pokemon.stats) */}
-            {this.buildFromData("Forms", pokemon.forms)}
-            {this.buildFromData("Abilities", pokemon.abilities, true, "ability")}
-            {this.buildFromData("Items", pokemon.held_items, true, "item")}
-            {this.buildFromData("Moves", pokemon.moves, true, "move")}
+            {this.buildStats(pokemon.stats)}
+            <div className="pokemon_data">
+                {this.buildFromData("Forms", pokemon.forms)}
+                {this.buildFromData("Abilities", pokemon.abilities, true, "ability")}
+                {this.buildFromData("Items", pokemon.held_items, true, "item")}
+                {this.buildFromData("Moves", pokemon.moves, true, "move")}
+            </div>
         </div> : null;
     }
 }

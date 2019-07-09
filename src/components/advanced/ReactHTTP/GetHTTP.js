@@ -13,7 +13,8 @@ export default class Get extends Component {
     searchPokemon = (e) => {
         e.preventDefault();
         axios.get(this.url + this.pokeName.current.value.toLowerCase()).then(res => {
-            if (!res || res.status !== 200) return;
+            if (!res || res.status !== 200 || Array.isArray(res.data.results))
+                return;
             
             this.setState({
                 pokemon: res.data
@@ -23,14 +24,13 @@ export default class Get extends Component {
 
     render() {
         return <div>
-            <h2>GET</h2>
-            {this.state.pokemon ?
-                <Pokemon pokemon={this.state.pokemon}/> : null
-            }
-            <form>
-                <input type="text" ref={this.pokeName}/>
-                <button type="button" onClick={this.searchPokemon}>Search</button>
+            <form className="inline-form">
+                <div className="form-field">
+                    <input type="text" defaultValue="squirtle" ref={this.pokeName}/>
+                    <button type="button" onClick={this.searchPokemon}>Search</button>
+                </div>
             </form>
+            {this.state.pokemon ? <Pokemon pokemon={this.state.pokemon}/> : <p>press search</p>}
         </div>;
     }
 }
