@@ -27,10 +27,10 @@ export default class Get extends Component {
             <form className="inline-form">
                 <div className="form-field">
                     <input type="text" defaultValue="squirtle" ref={this.pokeName}/>
-                    <button type="button" onClick={this.searchPokemon}>Search</button>
+                    <button type="button" onClick={this.searchPokemon}>Search pokemon</button>
                 </div>
             </form>
-            {this.state.pokemon ? <Pokemon pokemon={this.state.pokemon}/> : <p>press search</p>}
+            {this.state.pokemon ? <Pokemon pokemon={this.state.pokemon}/> : null}
         </div>;
     }
 }
