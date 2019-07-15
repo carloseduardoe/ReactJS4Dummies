@@ -28,8 +28,13 @@ import RenderProps from './components/advanced/RenderProps';
 import ButtonClicks from './components/advanced/RenderProps/ButtonClicks';
 import ElementHover from './components/advanced/RenderProps/ElementHover';
 import Context from './components/advanced/Context';
-*/
 import ReactHTTP from './components/advanced/ReactHTTP';
+*/
+
+/* // hooks
+import SetState from './components/hooks/SetState';
+import SetStateObject from './components/hooks/SetStateObject';
+*/
 
 export default class App extends Component {
   constructor(props) {
@@ -95,8 +100,21 @@ export default class App extends Component {
             <ElementHover position={position} incrementCount={incrementCount} />}>
           </RenderProps>
           <Context />
+          <ReactHTTP/>
         */}
-        <ReactHTTP/>
+
+        {/* // hooks
+          <SetState start={0} increment={1}/>
+          <hr/>
+          <SetState start={2} increment={3}/>
+          <hr/>
+          <SetStateObject userData={{
+            firstName: "Alice",
+            lastName: "Atkins",
+            age: 25,
+            gender: "f"
+          }}/>
+        */}
       </div>
     );
   }
