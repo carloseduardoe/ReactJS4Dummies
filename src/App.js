@@ -34,8 +34,9 @@ import ReactHTTP from './components/advanced/ReactHTTP';
 /* // hooks
 import SetState from './components/hooks/SetState';
 import SetStateObject from './components/hooks/SetStateObject';
-*/
 import UseEffect from './components/hooks/UseEffect';
+*/
+import HTTPGet from './components/hooks/HTTPGet';
 
 export default class App extends Component {
   constructor(props) {
@@ -115,8 +116,9 @@ export default class App extends Component {
             age: 25,
             gender: "f"
           }}/>
+          <UseEffect start={101} displayPosition={false}/>
         */}
-        <UseEffect start={101} displayPosition={false}/>
+        <HTTPGet />
       </div>
     );
   }
