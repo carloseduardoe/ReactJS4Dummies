@@ -97,9 +97,10 @@ pre {
   justify-content: space-around;
 }
 
-.context_layer {
-  border: 1px dashed color(deep-blue-87);
-  background-color: rgba(color(dark-tangerine), 0.45);
+.component_layer {
   margin: 1em;
   padding: 1em;
+  color: color(white);
+  background-color: color(deep-blue-87);
+  border: 2px dashed color(dark-tangerine);
 }

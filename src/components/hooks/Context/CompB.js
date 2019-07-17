@@ -7,7 +7,7 @@ const CompB = () => {
     const user = useContext(UserContext);
     const data = useContext(DataContext);
 
-    return <div className="context_layer">
+    return <div className="component_layer">
         <pre>Email -> {user.email}</pre>
         <pre>Value1 -> {data.value1} </pre>
         <CompC/>

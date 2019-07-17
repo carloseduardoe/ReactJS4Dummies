@@ -11,7 +11,7 @@ const CompA = () => {
                 value1: "one",
                 value2: "two"
             }}>
-        <div className="context_layer">
+        <div className="component_layer">
             <pre>Alias -> {user.alias}</pre>
             <CompB/>
         </div>
