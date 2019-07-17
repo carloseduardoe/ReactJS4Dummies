@@ -1,14 +1,18 @@
 import React from 'react'
 import CompC from './CompC';
-import { DataContext } from '../UseContext';
+import { UserContext } from '../UseContext';
+import { DataContext } from './CompA';
 
 const CompB = () => {
-    return <div>
-        <DataContext.Consumer>
-            {data => <pre>{data.email}</pre>}
-        </DataContext.Consumer>
-        <CompC/>
-    </div>;
+    return <UserContext.Consumer>{user =>
+        <DataContext.Consumer>{data => 
+            <div>
+                <pre>Email: {user.email}</pre>
+                <pre>Value1: {data.value1} </pre>
+                <CompC/>
+            </div>
+        }</DataContext.Consumer>
+    }</UserContext.Consumer>;
 }
 
 export default CompB

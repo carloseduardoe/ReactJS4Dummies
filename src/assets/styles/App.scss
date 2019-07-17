@@ -1,6 +1,48 @@
-// Your variable overrides
-$body-bg: #FFF;
-$body-color: #111;
+$colors: (
+  black: #000,
+  outer-space: #2c2d2d,
+  tundora: #4a4a4a,
+  trout: #4b535b,
+  scorpion: #595959,
+  silver: #c4c4c4,
+  iron: #d3d5d8,
+  alto: #d4d4d4,
+  geyser: #d5dbe6,
+  white-smoke: #efefef,
+  concrete: #f3f3f3,
+  alabaster: #f7f7f7,
+  white: #fff,
+  raven: #727577,
+  silver-sand: #c3c6ca,
+  periwinkle-gray: #bccee1,
+  catskill-white: #e8eff5,
+  darker-pearl: #041228,
+  black-pearl: #071b39,
+  deep-blue: #0a3370,
+  fiord: #3a4e6a,
+  lochmara: #2066a2,
+  havelock-blue: #539bd4,
+  danube: #70abdb,
+  alice-blue: #ecf0f3,
+  mystic: #dee7e9,
+  golden-glow: #fee097,
+  kournikova: #fdcb54,
+  dark-tangerine: #fdb913,
+  alabaster-120: darken(#f7f7f7, 20%),
+  alabaster-110: darken(#f7f7f7, 10%),
+  black-pearl-67: rgba(#071b39, 0.67),
+  deep-blue-40: rgba(#0a3370, 0.4),
+  deep-blue-87: rgba(#0a3370, 0.87),
+  havelock-blue-62: rgba(#539bd4, 0.62),
+  shadow: rgba(0, 0, 0, 0.1),
+  shadow-55: rgba(0, 0, 0, 0.55),
+  light-shade: rgba(161, 161, 161, 0.21),
+  transparent: rgba(236, 240, 243, 0.56)
+);
+
+@function color($name) {
+  @return map-get($colors, $name)
+}
 
 body {
   font-family: sans-serif;
@@ -44,4 +86,11 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.nested_divs, .nested_divs div {
+  border: 1px dashed color(deep-blue-87);
+  background-color: rgba(color(dark-tangerine), 0.45);
+  margin: 1em;
+  padding: 1em;
 }

@@ -1,17 +1,20 @@
 import React from 'react'
 import CompA from './Context/CompA';
 
-export const DataContext = React.createContext();
+export const UserContext = React.createContext();
 
 const UseContext = () => {
+    const style = {
+        paddingLeft: "2em"
+    };
     // the "value" prop is used to pass data down the component tree.
-    return <DataContext.Provider value={{
-        alias: "random_username",
-        email: "email@domain.ext",
-        id: 123456
-    }}>
+    return <UserContext.Provider value={{
+            alias: "random_username",
+            email: "email@domain.ext",
+            id: 123456
+        }}>
         <CompA/>
-    </DataContext.Provider>;
+    </UserContext.Provider>;
 }
 
 export default UseContext
