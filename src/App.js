@@ -37,8 +37,9 @@ import UseStateObject from './components/hooks/UseStateObject';
 import UseEffect from './components/hooks/UseEffect';
 import HTTPGet from './components/hooks/HTTPGet';
 import UseContext from './components/hooks/UseContext';
-*/
 import UseReducer from './components/hooks/UseReducer';
+*/
+import GlobalState from './components/hooks/GlobalState';
 
 export default class App extends Component {
   constructor(props) {
@@ -121,14 +122,15 @@ export default class App extends Component {
           <UseEffect start={101} displayPosition={false}/>
           <HTTPGet />
           <UseContext />
+          <UseReducer start={0} increment={1} user={{
+            firstname: "John",
+            lastname: "Doe",
+            age: 32,
+            mobile: "555-555-5555",
+            address: "742 Evergreen Terrace"
+          }}/>
         */}
-        <UseReducer start={0} increment={1} user={{
-          firstname: "John",
-          lastname: "Doe",
-          age: 32,
-          mobile: "555-555-5555",
-          address: "742 Evergreen Terrace"
-        }}/>
+        <GlobalState />
       </div>
     );
   }
