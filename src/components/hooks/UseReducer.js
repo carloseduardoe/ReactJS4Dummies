@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 
 const UseReducer = ({ start, increment, user }) => {
-
     const valueReducer = (value, action) => {
         switch (action) {
             case "-":
@@ -19,31 +18,19 @@ const UseReducer = ({ start, increment, user }) => {
         let key, value;
 
         switch (action.type) {
-            case "changeName":
-                key = "firstname";
-                value = userObject.firstname === "John" ? "Jane" : "John";
-                break;
-            case "regressAge":
-                key = "age";
-                value = userObject.age - action.variation;
-                break;
-            case "progressAge":
-                key = "age";
-                value = userObject.age + action.variation;
-                break;
-            case "changeNumber":
-                key = "mobile";
-                value = userObject.mobile === "555-555-5555" ? "678-678-6785" : "555-555-5555";
-                break;
-            case "move":
-                key = "address";
-                value = userObject.address === "742 Evergreen Terrace" ? "349 Mill Blvd" : "742 Evergreen Terrace";
-                break;
+            case "changeName": 
+                return { ...userObject, firstname: userObject.firstname === "John" ? "Jane" : "John"};
+            case "regressAge": 
+                return { ...userObject, age: userObject.age - action.variation};
+            case "progressAge": 
+                return { ...userObject, age: userObject.age + action.variation};
+            case "changeNumber": 
+                return { ...userObject, mobile: userObject.mobile === "555-555-5555" ? "678-678-6785" : "555-555-5555"};
+            case "move": 
+                return { ...userObject, address: userObject.address === "742 Evergreen Terrace" ? "349 Mill Blvd" : "742 Evergreen Terrace"};
             default:
-                break;
+                return userObject;
         }
-        
-        return {...userObject, [key]: value};
     }
 
     const [count, dispatchValue] = useReducer(valueReducer, start);
@@ -59,7 +46,7 @@ const UseReducer = ({ start, increment, user }) => {
             <button onClick={() => dispatchObject({type: "move"})}>move</button>
         </div>
         <div className="component_layer">
-            <div>Count: {count}</div>
+            <pre>Counter: {count}</pre>
             <button onClick={() => dispatchValue("-")}>-1</button>
             <button onClick={() => dispatchValue("0")}>reset</button>
             <button onClick={() => dispatchValue("+")}>+1</button>
