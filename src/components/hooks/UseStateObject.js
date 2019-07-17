@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SetState = ({ userData }) => {
+const UseStateObject = ({ userData }) => {
     const [user, setData] = useState(userData || {});
     const inputStyle = {
         margin: "0 20px 10px 20px"
@@ -90,4 +90,4 @@ const SetState = ({ userData }) => {
     </div>;
 }
 
-export default SetState;
+export default UseStateObject;

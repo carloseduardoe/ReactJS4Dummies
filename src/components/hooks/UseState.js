@@ -18,14 +18,14 @@ import React, { useState } from 'react';
 */
 
 /* 
- + setState hook
+ + useState hook
  *
  * Uses array destructuring with two values
  *     - A variable to which the value in parenthesis will be assigned.
  *     - A function name which which will be used to set subsequent values.
  */
 
-const SetState = ({ start, increment }) => {
+const UseState = ({ start, increment }) => {
     const [count, setCount] = useState(start);
     
     // Note the first warning (this is bad practice)
@@ -50,4 +50,4 @@ const SetState = ({ start, increment }) => {
     </div>;
 }
 
-export default SetState;
+export default UseState;

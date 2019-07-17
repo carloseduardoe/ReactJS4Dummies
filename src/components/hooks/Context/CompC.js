@@ -6,7 +6,7 @@ const CompC = () => {
     const user = useContext(UserContext);
     const data = useContext(DataContext);
 
-    return <div>
+    return <div className="context_layer">
         <pre>id -> {user.id}</pre>
         <pre>Value2 -> {data.value2}</pre>
         <hr/>

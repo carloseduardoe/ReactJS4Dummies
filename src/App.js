@@ -32,12 +32,13 @@ import ReactHTTP from './components/advanced/ReactHTTP';
 */
 
 /* // hooks
-import SetState from './components/hooks/SetState';
-import SetStateObject from './components/hooks/SetStateObject';
+import UseState from './components/hooks/UseState';
+import UseStateObject from './components/hooks/UseStateObject';
 import UseEffect from './components/hooks/UseEffect';
 import HTTPGet from './components/hooks/HTTPGet';
 */
 import UseContext from './components/hooks/UseContext';
+import UseReducer from './components/hooks/UseReducer';
 
 export default class App extends Component {
   constructor(props) {
@@ -107,11 +108,11 @@ export default class App extends Component {
         */}
 
         {/* // hooks
-          <SetState start={0} increment={1}/>
+          <UseState start={0} increment={1}/>
           <hr/>
-          <SetState start={2} increment={3}/>
+          <UseState start={2} increment={3}/>
           <hr/>
-          <SetStateObject userData={{
+          <UseStateObject userData={{
             firstName: "Alice",
             lastName: "Atkins",
             age: 25,
@@ -121,6 +122,7 @@ export default class App extends Component {
           <HTTPGet />
         */}
         <UseContext />
+        <UseReducer />
       </div>
     );
   }

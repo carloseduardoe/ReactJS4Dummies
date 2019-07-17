@@ -97,7 +97,7 @@ pre {
   justify-content: space-around;
 }
 
-.nested_divs, .nested_divs div {
+.context_layer {
   border: 1px dashed color(deep-blue-87);
   background-color: rgba(color(dark-tangerine), 0.45);
   margin: 1em;
