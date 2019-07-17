@@ -1,21 +1,21 @@
-import React from 'react'
-import CompB from './CompB';
+import React, { useContext } from 'react'
 import { UserContext } from '../UseContext';
+import CompB from './CompB';
 
 export const DataContext = React.createContext();
 
 const CompA = () => {
-    return <UserContext.Consumer>{user => 
-        <DataContext.Provider value={{
-            value1: "one",
-            value2: "two"
-        }}>
-            <div className="nested_divs">
-                <pre>Alias: {user.alias}</pre>
-                <CompB/>
-            </div>
-        </DataContext.Provider>
-    }</UserContext.Consumer>;
+    const user = useContext(UserContext);
+
+    return <DataContext.Provider value={{
+                value1: "one",
+                value2: "two"
+            }}>
+        <div className="nested_divs">
+            <pre>Alias -> {user.alias}</pre>
+            <CompB/>
+        </div>
+    </DataContext.Provider>
 }
 
 export default CompA

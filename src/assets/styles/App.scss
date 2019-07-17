@@ -44,8 +44,17 @@ $colors: (
   @return map-get($colors, $name)
 }
 
-body {
-  font-family: sans-serif;
+@font-face {
+  font-family: 'Fira Code';
+  src: url("../fonts/FiraCode-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+pre {
+  font-family: "Fira Code", monospace;
+  font-variant-ligatures: contextual;
+  font-size: 17px
 }
 
 .pokemon_container {
