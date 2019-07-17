@@ -25,7 +25,11 @@ const UseReducer = ({ start, increment, user }) => {
                 break;
             case "regressAge":
                 key = "age";
-                value = userObject.age - 1;
+                value = userObject.age - action.variation;
+                break;
+            case "progressAge":
+                key = "age";
+                value = userObject.age + action.variation;
                 break;
             case "changeNumber":
                 key = "mobile";
@@ -49,7 +53,8 @@ const UseReducer = ({ start, increment, user }) => {
         <div className="component_layer">
             <pre>User: {JSON.stringify(currentUser, null, 2)}</pre>
             <button onClick={() => dispatchObject({type: "changeName"})}>rename</button>
-            <button onClick={() => dispatchObject({type: "regressAge"})}>regress age</button>
+            <button onClick={() => dispatchObject({type: "regressAge", variation: 2})}>age -2</button>
+            <button onClick={() => dispatchObject({type: "progressAge", variation: 3})}>age +3</button>
             <button onClick={() => dispatchObject({type: "changeNumber"})}>reassign</button>
             <button onClick={() => dispatchObject({type: "move"})}>move</button>
         </div>
