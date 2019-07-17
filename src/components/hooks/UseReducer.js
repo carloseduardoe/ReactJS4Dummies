@@ -19,15 +19,30 @@ const UseReducer = ({ start, increment, user }) => {
 
         switch (action.type) {
             case "changeName": 
-                return { ...userObject, firstname: userObject.firstname === "John" ? "Jane" : "John"};
+                return { 
+                    ...userObject, 
+                    firstname: userObject.firstname === "John" ? "Jane" : "John"
+                };
             case "regressAge": 
-                return { ...userObject, age: userObject.age - action.variation};
+                return { 
+                    ...userObject, 
+                    age: userObject.age - action.variation
+                };
             case "progressAge": 
-                return { ...userObject, age: userObject.age + action.variation};
+                return { 
+                    ...userObject, 
+                    age: userObject.age + action.variation
+                };
             case "changeNumber": 
-                return { ...userObject, mobile: userObject.mobile === "555-555-5555" ? "678-678-6785" : "555-555-5555"};
+                return { 
+                    ...userObject, 
+                    mobile: userObject.mobile === "555-555-5555" ? "678-678-6785" : "555-555-5555"
+                };
             case "move": 
-                return { ...userObject, address: userObject.address === "742 Evergreen Terrace" ? "349 Mill Blvd" : "742 Evergreen Terrace"};
+                return { 
+                    ...userObject, 
+                    address: userObject.address === "742 Evergreen Terrace" ? "349 Mill Blvd" : "742 Evergreen Terrace"
+                };
             default:
                 return userObject;
         }
