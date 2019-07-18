@@ -38,100 +38,99 @@ import UseEffect from './components/hooks/UseEffect';
 import HTTPGet from './components/hooks/HTTPGet';
 import UseContext from './components/hooks/UseContext';
 import UseReducer from './components/hooks/UseReducer';
-*/
 import GlobalState from './components/hooks/GlobalState';
+*/
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: this.getTodoList()
-    };
-  }
-
-  getTodoList () {
-    return [{
-      id: 1, completed: false, title: "Clean Room"
-    }, {
-      id: 2, completed: false, title: "Study for IELTS"
-    }, {
-      id: 3, completed: false, title: "Work out"
-    }];
-  }
-
-  render () {
-    return (
-      <div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: this.getTodoList()
+        };
+    }
+    
+    getTodoList() {
+        return [{
+            id: 1, completed: false, title: "Clean Room"
+        }, {
+            id: 2, completed: false, title: "Study for IELTS"
+        }, {
+            id: 3, completed: false, title: "Work out"
+        }];
+    }
+    
+    render() {
+        return <div>
         {/* // basics
-          <TodoList name="Carlos" todos={this.state.todos} /><br />
-          <Hello name="Carlos" />
-          <Hero name="Bruce" alias="Batman">
+            <TodoList name="Carlos" todos={this.state.todos} /><br />
+            <Hello name="Carlos" />
+            <Hero name="Bruce" alias="Batman">
             <p>Sample child 1</p>
             <p>Sample child 2</p>
-          </Hero>
-          <Hero name="Diana" alias="Wonder Woman" />
-          <ActionButton value={false}/>
-          <Counter five={false}/>
-          <EventBindingTypes message="+1"/ >
-          <Parent name="Parent"/>
-          <InlineConditionals username="Spongebob" loggedIn={true} />
-          <ObjectList /> 
-          <Form />
-          <LifecycleParent>
+            </Hero>
+            <Hero name="Diana" alias="Wonder Woman" />
+            <ActionButton value={false}/>
+            <Counter five={false}/>
+            <EventBindingTypes message="+1"/ >
+            <Parent name="Parent"/>
+            <InlineConditionals username="Spongebob" loggedIn={true} />
+            <ObjectList /> 
+            <Form />
+            <LifecycleParent>
             <LifecycleChild />
-          </LifecycleParent>
+            </LifecycleParent>
         */}
-
+        
         {/* // advanced
-          <Fragments />
-          <Pure />
-          <Refs />
-          <Portal />
-          <Division dividend={1} divisor={64} />
-          <Division dividend={1} divisor={32} />
-          <Division dividend={1} divisor={16} />
-          <Division dividend={1} divisor={8} />
-          <Division dividend={1} divisor={4} />
-          <Division dividend={1} divisor={2} />
-          <Division dividend={1} divisor={1} />
-          <ErrorBoundary>
+            <Fragments />
+            <Pure />
+            <Refs />
+            <Portal />
+            <Division dividend={1} divisor={64} />
+            <Division dividend={1} divisor={32} />
+            <Division dividend={1} divisor={16} />
+            <Division dividend={1} divisor={8} />
+            <Division dividend={1} divisor={4} />
+            <Division dividend={1} divisor={2} />
+            <Division dividend={1} divisor={1} />
+            <ErrorBoundary>
             <Division dividend={1} divisor={0} />
-          </ErrorBoundary>
-          <HigherOrder />
-          <RenderProps start={0} increment={2} create={(position, incrementCount) => 
-            <ButtonClicks position={position} incrementCount={incrementCount} />}>
-          </RenderProps>
-          <RenderProps start={0} increment={5} create={(position, incrementCount) =>
-            <ElementHover position={position} incrementCount={incrementCount} />}>
-          </RenderProps>
-          <Context />
-          <ReactHTTP/>
+            </ErrorBoundary>
+            <HigherOrder />
+            <RenderProps start={0} increment={2} create={(position, incrementCount) => 
+                <ButtonClicks position={position} incrementCount={incrementCount} />}>
+            </RenderProps>
+            <RenderProps start={0} increment={5} create={(position, incrementCount) =>
+                <ElementHover position={position} incrementCount={incrementCount} />}>
+            </RenderProps>
+            <Context />
+            <ReactHTTP/>
         */}
-
+        
         {/* // hooks
-          <UseState start={0} increment={1}/>
-          <hr/>
-          <UseState start={2} increment={3}/>
-          <hr/>
-          <UseStateObject userData={{
-            firstName: "Alice",
-            lastName: "Atkins",
-            age: 25,
-            gender: "f"
-          }}/>
-          <UseEffect start={101} displayPosition={false}/>
-          <HTTPGet />
-          <UseContext />
-          <UseReducer start={0} increment={1} user={{
-            firstname: "John",
-            lastname: "Doe",
-            age: 32,
-            mobile: "555-555-5555",
-            address: "742 Evergreen Terrace"
-          }}/>
+            <UseState start={0} increment={1}/>
+            <hr/>
+            <UseState start={2} increment={3}/>
+            <hr/>
+            <UseStateObject userData={{
+                firstName: "Alice",
+                lastName: "Atkins",
+                age: 25,
+                gender: "f"
+            }}/>
+            <UseEffect start={101} displayPosition={false}/>
+            <HTTPGet />
+            <UseContext />
+            <UseReducer start={0} increment={1} user={{
+                firstname: "John",
+                lastname: "Doe",
+                age: 32,
+                mobile: "555-555-5555",
+                address: "742 Evergreen Terrace"
+            }}/>
+            <GlobalState start={0} increment={1} user={{ name: "John", age: 32, weight: 78 }}/>
         */}
-        <GlobalState />
-      </div>
-    );
-  }
+        </div>;
+    }
 }
+        

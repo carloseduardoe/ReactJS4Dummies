@@ -15,8 +15,6 @@ const UseReducer = ({ start, increment, user }) => {
     }
 
     const objectReducer = (userObject, action) => {
-        let key, value;
-
         switch (action.type) {
             case "changeName": 
                 return { 
