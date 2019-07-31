@@ -40,7 +40,10 @@ import UseContext from './components/hooks/UseContext';
 import UseReducer from './components/hooks/UseReducer';
 import GlobalState from './components/hooks/GlobalState';
 import UseReducerHTTP from './components/hooks/UseReducerHTTP';
+import UseCallback from './components/hooks/UseCallback';
+import UseMemo from './components/hooks/UseMemo';
 */
+import UseRef from './components/hooks/UseRef';
 
 export default class App extends Component {
     constructor(props) {
@@ -131,7 +134,10 @@ export default class App extends Component {
             }}/>
             <GlobalState start={0} increment={1} user={{ name: "John", age: 32, weight: 78 }}/>
             <UseReducerHTTP />
+            <UseCallback />
+            <UseMemo />
         */}
+        <UseRef />
         </div>;
     }
 }

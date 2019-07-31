@@ -122,9 +122,28 @@ button {
 }
 
 .component_layer {
-  margin: 1em;
+  margin: 1em auto;
+  max-width: 80%;
   padding: 1em;
   color: color(white);
   background-color: color(deep-blue-70);
   border: 2px dashed color(dark-tangerine);
+}
+
+.input_group {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  
+  label {
+    flex: 0 0 30%;
+  }
+
+  input, textarea {
+    flex: 0 1 60%;
+  }
 }

@@ -51,18 +51,18 @@ const UseReducer = ({ start, increment, user }) => {
 
     return <div className="component_layer">
         <div className="component_layer">
+            <pre>Counter: {count}</pre>
+            <button onClick={() => dispatchValue("-")}>-1</button>
+            <button onClick={() => dispatchValue("0")}>reset</button>
+            <button onClick={() => dispatchValue("+")}>+1</button>
+        </div>
+        <div className="component_layer">
             <pre>User: {JSON.stringify(currentUser, null, 2)}</pre>
             <button onClick={() => dispatchObject({type: "changeName"})}>rename</button>
             <button onClick={() => dispatchObject({type: "regressAge", variation: 2})}>age -2</button>
             <button onClick={() => dispatchObject({type: "progressAge", variation: 3})}>age +3</button>
             <button onClick={() => dispatchObject({type: "changeNumber"})}>reassign</button>
             <button onClick={() => dispatchObject({type: "move"})}>move</button>
-        </div>
-        <div className="component_layer">
-            <pre>Counter: {count}</pre>
-            <button onClick={() => dispatchValue("-")}>-1</button>
-            <button onClick={() => dispatchValue("0")}>reset</button>
-            <button onClick={() => dispatchValue("+")}>+1</button>
         </div>
     </div>;
 }
