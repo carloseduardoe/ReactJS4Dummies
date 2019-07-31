@@ -39,6 +39,7 @@ import HTTPGet from './components/hooks/HTTPGet';
 import UseContext from './components/hooks/UseContext';
 import UseReducer from './components/hooks/UseReducer';
 import GlobalState from './components/hooks/GlobalState';
+import UseReducerHTTP from './components/hooks/UseReducerHTTP';
 */
 
 export default class App extends Component {
@@ -129,6 +130,7 @@ export default class App extends Component {
                 address: "742 Evergreen Terrace"
             }}/>
             <GlobalState start={0} increment={1} user={{ name: "John", age: 32, weight: 78 }}/>
+            <UseReducerHTTP />
         */}
         </div>;
     }
