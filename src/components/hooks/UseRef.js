@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import React, { useReducer, useRef } from 'react';
 
 const UseRef = () => {
     const inputRef = useRef(null),
@@ -10,8 +10,8 @@ const UseRef = () => {
           },
           refreshState = (state, source) => {
               switch (source) {
-                  case "input": return {...state, ["inputValue"]: inputRef.current.value };
-                  case "area": return {...state, ["areaValue"]: areaRef.current.value };
+                  case "input": return {...state, inputValue: inputRef.current.value };
+                  case "area": return {...state, areaValue: areaRef.current.value };
                   default: return {...state};
               }
           };

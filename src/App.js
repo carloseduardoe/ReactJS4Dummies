@@ -42,8 +42,8 @@ import GlobalState from './components/hooks/GlobalState';
 import UseReducerHTTP from './components/hooks/UseReducerHTTP';
 import UseCallback from './components/hooks/UseCallback';
 import UseMemo from './components/hooks/UseMemo';
-*/
 import UseRef from './components/hooks/UseRef';
+*/
 
 export default class App extends Component {
     constructor(props) {
@@ -136,8 +136,8 @@ export default class App extends Component {
             <UseReducerHTTP />
             <UseCallback />
             <UseMemo />
+            <UseRef />
         */}
-        <UseRef />
         </div>;
     }
 }
