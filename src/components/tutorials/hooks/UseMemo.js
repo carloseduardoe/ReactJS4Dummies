@@ -24,7 +24,7 @@ const UseMemo = () => {
         let i = 0;
         while (i < 99999999) i++;
         return count % 2 === 0;
-    }, [counter]);
+    }, [count]);
 
     return <div>
         <Counter text="+1" count={count} increment={increment}/>
