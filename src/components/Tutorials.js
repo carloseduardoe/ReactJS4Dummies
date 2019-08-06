@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 /*  basics  */
 import Hero from './tutorials/basics/Hero';
@@ -18,7 +18,7 @@ import Fragments from './tutorials/advanced/Fragments';
 import Pure from './tutorials/advanced/Pure';
 import Refs from './tutorials/advanced/Refs';
 import Portal from './tutorials/advanced/Portal';
-import ErrorBoundary from './tutorials/advanced/ErrorBoundary';
+// import ErrorBoundary from './tutorials/advanced/ErrorBoundary';
 import Division from './tutorials/advanced/ErrorBoundary/Division';
 import HigherOrder from './tutorials/advanced/HigherOrder';
 import RenderProps from './tutorials/advanced/RenderProps';

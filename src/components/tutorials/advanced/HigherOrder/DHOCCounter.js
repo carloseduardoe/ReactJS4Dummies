@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 /*
  * Higher Order Components are a means to implement inheritance

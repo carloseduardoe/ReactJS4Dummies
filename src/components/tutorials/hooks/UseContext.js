@@ -4,9 +4,6 @@ import CompA from './Context/CompA';
 export const UserContext = React.createContext();
 
 const UseContext = () => {
-    const style = {
-        paddingLeft: "2em"
-    };
     // the "value" prop is used to pass data down the component tree.
     return <UserContext.Provider value={{
             alias: "random_username",

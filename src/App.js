@@ -29,7 +29,7 @@ export default class App extends Component {
               <Route path="/todos" component={TodoList} />
               <Route path="/login" component={UserSignIn} />
               <Route path="/signup" component={UserSignUp} />
-              <Route path="/signout" component={UserSignOut} />
+              <Route path="/logout" component={UserSignOut} />
               <Route path="/tutorials" component={Tutorials} />
               <Route component={NotFound} />
             </Switch>
