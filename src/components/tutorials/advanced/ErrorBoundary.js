@@ -49,7 +49,7 @@ export default class ErrorBoundary extends Component {
 				<h3>Whoops!</h3>
 				<img style={imageStyle} 
 					 src="https://img.memecdn.com/sum-ting-wong_o_3633973.jpg" 
-					 alt="Image: sumtin went wong"/>
+					 alt="sum tin wong"/>
 			</div>;
 		}
 		return <div>{this.props.children}</div>;

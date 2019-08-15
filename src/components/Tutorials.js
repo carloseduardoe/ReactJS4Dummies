@@ -67,12 +67,12 @@ const Tutorials = () => {
             Refs: <Refs />,
             Portal: <Portal />,
             Division: <Division dividend={1} divisor={64} />,
-            Division: <Division dividend={1} divisor={32} />,
-            Division: <Division dividend={1} divisor={16} />,
-            Division: <Division dividend={1} divisor={8} />,
-            Division: <Division dividend={1} divisor={4} />,
-            Division: <Division dividend={1} divisor={2} />,
-            Division: <Division dividend={1} divisor={1} />,
+            Division_1: <Division dividend={1} divisor={32} />,
+            Division_2: <Division dividend={1} divisor={16} />,
+            Division_3: <Division dividend={1} divisor={8} />,
+            Division_4: <Division dividend={1} divisor={4} />,
+            Division_5: <Division dividend={1} divisor={2} />,
+            Division_6: <Division dividend={1} divisor={1} />,
             ErrorBoundary: <ErrorBoundary>
                     <Division dividend={1} divisor={0} />
                 </ErrorBoundary>,
@@ -80,7 +80,7 @@ const Tutorials = () => {
             RenderProps: <RenderProps start={0} increment={2} create={(position, incrementCount) => 
                     <ButtonClicks position={position} incrementCount={incrementCount} />
                 }></RenderProps>,
-            RenderProps: <RenderProps start={0} increment={5} create={(position, incrementCount) =>
+            RenderProps_1: <RenderProps start={0} increment={5} create={(position, incrementCount) =>
                     <ElementHover position={position} incrementCount={incrementCount} />
                 }></RenderProps>,
             Context: <Context />,
@@ -88,7 +88,7 @@ const Tutorials = () => {
         },
         hooks: {
             UseState: <UseState start={0} increment={1} />,
-            UseState: <UseState start={2} increment={3} />,
+            UseState_1: <UseState start={2} increment={3} />,
             UseStateObject: <UseStateObject userData={{
                     firstName: "Alice",
                     lastName: "Atkins",
@@ -129,8 +129,8 @@ const Tutorials = () => {
         <div className="component_layer">
             {Object.keys(category).map(item => <button onClick={() => setOption(category[item])}>{item}</button>)}
         </div>
+        <h2>Result</h2>
         <div className="component_layer">
-            <h2>Result</h2>
             {option}
         </div>
     </div>;
