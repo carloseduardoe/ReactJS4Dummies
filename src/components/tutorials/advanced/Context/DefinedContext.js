@@ -5,10 +5,7 @@ import React from 'react';
 */
 
 
-const Context = React.createContext({
-    name: "",
-    age: 0
-});
+const Context = React.createContext();
 
 const Provider = Context.Provider;
 

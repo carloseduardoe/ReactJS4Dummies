@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Route, Link } from 'react-router-dom';
 
 /*  basics  */
 import Hero from './tutorials/basics/Hero';
@@ -41,98 +42,105 @@ import UseMemo from './tutorials/hooks/UseMemo';
 import UseRef from './tutorials/hooks/UseRef';
 import UseCustomHook from './tutorials/hooks/UseCustomHook';
 
-const Tutorials = () => {
+const Tutorials = ({ match }) => {
     const menu = {
-        basics: {
-            Hello: <Hello name="Carlos" />,
-            Hero: <Hero name="Diana" alias="Wonder Woman" />,
-            HeroAndChildren: <Hero name="Bruce" alias="Batman">
+        Basics: {
+            Hello: () => <Hello name="Carlos" />,
+            Hero: () => <Hero name="Diana" alias="Wonder Woman" />,
+            HeroAndChildren: () => <Hero name="Bruce" alias="Batman">
                     <p>child 1</p>
                     <p>child 2</p>
                 </Hero>,
-            ActionButton: <ActionButton value={false} />,
-            Counter: <Counter five={false} />,
-            EventBindingTypes: <EventBindingTypes message="+1" />,
-            Parent: <Parent name="Parent" />,
-            InlineConditionals: <InlineConditionals username="Spongebob" loggedIn={true} />,
-            ObjectList: <ObjectList />,
-            Form: <Form />,
-            LifecycleParent: <LifecycleParent>
+            ActionButton: () => <ActionButton value={false} />,
+            Counter: () => <Counter five={false} />,
+            EventBindingTypes: () => <EventBindingTypes message="+1" />,
+            Parent: () => <Parent name="Parent" />,
+            InlineConditionals: () => <InlineConditionals username="Spongebob" loggedIn={true} />,
+            ObjectList: () => <ObjectList />,
+            Form: () => <Form />,
+            LifecycleParent: () => <LifecycleParent>
                     <LifecycleChild />
                 </LifecycleParent>,
         },
-        advanced: {
-            Fragments: <Fragments />,
-            Pure: <Pure />,
-            Refs: <Refs />,
-            Portal: <Portal />,
-            Division: <Division dividend={1} divisor={64} />,
-            Division_1: <Division dividend={1} divisor={32} />,
-            Division_2: <Division dividend={1} divisor={16} />,
-            Division_3: <Division dividend={1} divisor={8} />,
-            Division_4: <Division dividend={1} divisor={4} />,
-            Division_5: <Division dividend={1} divisor={2} />,
-            Division_6: <Division dividend={1} divisor={1} />,
-            ErrorBoundary: <ErrorBoundary>
+        Advanced: {
+            Fragments: () => <Fragments />,
+            Pure: () => <Pure />,
+            Refs: () => <Refs />,
+            Portal: () => <Portal />,
+            Division: () => <div>
+                <Division dividend={1} divisor={64} />
+                <Division dividend={1} divisor={32} />
+                <Division dividend={1} divisor={16} />
+                <Division dividend={1} divisor={8} />
+                <Division dividend={1} divisor={4} />
+                <Division dividend={1} divisor={2} />
+                <Division dividend={1} divisor={1} />
+            </div>,
+            ErrorBoundary: () => <ErrorBoundary>
                     <Division dividend={1} divisor={0} />
                 </ErrorBoundary>,
-            HigherOrder: <HigherOrder />,
-            RenderProps: <RenderProps start={0} increment={2} create={(position, incrementCount) => 
-                    <ButtonClicks position={position} incrementCount={incrementCount} />
-                }></RenderProps>,
-            RenderProps_1: <RenderProps start={0} increment={5} create={(position, incrementCount) =>
+            HigherOrder: () => <HigherOrder />,
+            RenderProps: () => <div>
+                <RenderProps start={0} increment={2} create={(position, incrementCount) => 
+                        <ButtonClicks position={position} incrementCount={incrementCount} />
+                    }></RenderProps>
+                <RenderProps start={0} increment={5} create={(position, incrementCount) =>
                     <ElementHover position={position} incrementCount={incrementCount} />
-                }></RenderProps>,
-            Context: <Context />,
-            ReactHTTP: <ReactHTTP/>
+                }></RenderProps>
+            </div>,
+            Context: () => <Context />,
+            ReactHTTP: () => <ReactHTTP/>
         },
-        hooks: {
-            UseState: <UseState start={0} increment={1} />,
-            UseState_1: <UseState start={2} increment={3} />,
-            UseStateObject: <UseStateObject userData={{
+        Hooks: {
+            UseState: () => <div>
+                    <UseState start={0} increment={1} />
+                    <UseState start={2} increment={3} />
+                </div>,
+            UseStateObject: () => <UseStateObject userData={{
                     firstName: "Alice",
                     lastName: "Atkins",
                     age: 25,
                     gender: "f"
                 }} />,
-            UseEffect: <UseEffect start={101} displayPosition={false} />,
-            HTTPGet: <HTTPGet />,
-            UseContext: <UseContext />,
-            UseReducer: <UseReducer start={0} increment={1} user={{
+            UseEffect: () => <UseEffect start={101} displayPosition={false} />,
+            HTTPGet: () => <HTTPGet />,
+            UseContext: () => <UseContext />,
+            UseReducer: () => <UseReducer start={0} increment={1} user={{
                     firstname: "John",
                     lastname: "Doe",
                     age: 32,
                     mobile: "555-555-5555",
                     address: "742 Evergreen Terrace"
                 }} />,
-            GlobalState: <GlobalState start={0} increment={1} user={{ 
+            GlobalState: () => <GlobalState start={0} increment={1} user={{ 
                     name: "John", 
                     age: 32, 
                     weight: 78 
                 }} />,
-            UseReducerHTTP: <UseReducerHTTP />,
-            UseCallback: <UseCallback />,
-            UseMemo: <UseMemo />,
-            UseRef: <UseRef />,
-            UseCustomHook: <UseCustomHook />
+            UseReducerHTTP: () => <UseReducerHTTP />,
+            UseCallback: () => <UseCallback />,
+            UseMemo: () => <UseMemo />,
+            UseRef: () => <UseRef />,
+            UseCustomHook: () => <UseCustomHook />
         }
-    };
-    const [category, setCategory] = useState(menu.basics);
-    const [option, setOption] = useState(menu.basics.Hello);
+    }, 
+    { category, item } = match.params;
+
+    const element = (category && item) ?
+                        <Route path={`/tutorials/${category}/${item}`} component={ (menu[category])[item] } /> : 
+                        <div className="component_layer">Select an option to see the results.</div>;
 
     return <div className="component_layer">
-        <h2>Category</h2>
-        <div className="component_layer">
-            {Object.keys(menu).map(item => <button onClick={() => setCategory(menu[item])}>{item}</button>)}
-        </div>
-        <h2>Tutorial</h2>
-        <div className="component_layer">
-            {Object.keys(category).map(item => <button onClick={() => setOption(category[item])}>{item}</button>)}
-        </div>
-        <h2>Result</h2>
-        <div className="component_layer">
-            {option}
-        </div>
+        {Object.keys(menu).map((section, i) => <div className="component_layer" key={i} >
+            <h5>{section} :</h5>
+            <ul>
+                {Object.keys(menu[section]).map((option, j) => <li className="menu_item" key={j}>
+                    <Link to={`/tutorials/${section}/${option}`}>{option}</Link>
+                </li>)}
+            </ul>
+        </div>)}
+
+        {element}
     </div>;
 }
 
