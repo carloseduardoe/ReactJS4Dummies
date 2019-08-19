@@ -40,7 +40,7 @@ import UseReducerHTTP from './tutorials/hooks/UseReducerHTTP';
 import UseCallback from './tutorials/hooks/UseCallback';
 import UseMemo from './tutorials/hooks/UseMemo';
 import UseRef from './tutorials/hooks/UseRef';
-import UseCustomHook from './tutorials/hooks/UseCustomHook';
+import CustomHook from './tutorials/hooks/CustomHook';
 
 const Tutorials = ({ match }) => {
     const menu = {
@@ -121,25 +121,27 @@ const Tutorials = ({ match }) => {
             UseCallback: () => <UseCallback />,
             UseMemo: () => <UseMemo />,
             UseRef: () => <UseRef />,
-            UseCustomHook: () => <UseCustomHook />
+            CustomHook: () => <CustomHook />
         }
     }, 
     { category, item } = match.params,
-    basepath = "/tutorials ";
+    basepath = "/tutorials";
 
     const element = (category && item) ?
                         <Route path={`${basepath}/${category}/${item}`} component={ (menu[category])[item] } /> : 
                         <div className="component_layer">Select an option to see the demo.</div>;
 
     return <div className="component_layer">
-        {Object.keys(menu).map((section, i) => <div className="component_layer" key={i} >
-            <h5>{section} :</h5>
-            <ul>
-                {Object.keys(menu[section]).map((option, j) => <li className="menu_item" key={j}>
-                    <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
-                </li>)}
-            </ul>
-        </div>)}
+        <div className="component_layer">
+            {Object.keys(menu).map((section, i) => <div key={i}>
+                <h5>{section} :</h5>
+                <ul>
+                    {Object.keys(menu[section]).map((option, j) => <li className="menu_item" key={j}>
+                        <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
+                    </li>)}
+                </ul>
+            </div>)}
+        </div>
 
         {element}
     </div>;
