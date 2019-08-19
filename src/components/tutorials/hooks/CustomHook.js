@@ -41,7 +41,6 @@ const CustomHook = () => {
 
     const [ firstName, { reset: resetFirst, onChange: updateFirst} ] = useInput(""),
           [ lastName, { reset: resetLast, onChange: updateLast} ] = useInput(""),
-
           submitHandler = e => {
               e.preventDefault();
               alert(`Hello ${firstName} ${lastName}`);
