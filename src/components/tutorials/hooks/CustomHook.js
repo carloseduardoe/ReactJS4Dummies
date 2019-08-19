@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const UseCustomHook = () => {
-    const [count, setCount] = useState(0);
-
+const useDocumentTitle = (count) => {
     useEffect(() => {
         document.title = `Count: ${count}`;
-    }, [count])
+    }, [count]);
+};
+
+const CustomHook = () => {
+    const [count, setCount] = useState(0);
+
+    useDocumentTitle(count);
 
     return <div className="component_layer">
         <div>{count}</div>
@@ -13,4 +17,4 @@ const UseCustomHook = () => {
     </div>;
 }
 
-export default UseCustomHook
+export default CustomHook;
