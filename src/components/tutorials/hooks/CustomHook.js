@@ -6,14 +6,14 @@ const useDocumentTitle = (count) => {
     }, [count]);
 };
 
-const useCounter = (start) => {
-    const [count, setCount] = useState(start || 0);
+const useCounter = (start = 0) => {
+    const [count, setCount] = useState(start);
     const methods = {
         increment: () => {
             setCount(prev => prev + 1);
         },
         reset: () => {
-            setCount(0);
+            setCount(start);
         },
         decrement: () => {
             setCount(prev => prev - 1);
