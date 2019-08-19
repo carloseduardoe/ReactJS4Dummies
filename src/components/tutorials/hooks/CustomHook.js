@@ -6,14 +6,34 @@ const useDocumentTitle = (count) => {
     }, [count]);
 };
 
-const CustomHook = () => {
-    const [count, setCount] = useState(0);
+const useCounter = (start) => {
+    const [count, setCount] = useState(start || 0);
+    const methods = {
+        increment: () => {
+            setCount(prev => prev + 1);
+        },
+        reset: () => {
+            setCount(0);
+        },
+        decrement: () => {
+            setCount(prev => prev - 1);
+        }
+    };
+    return [ count, methods ];
+};
 
-    useDocumentTitle(count);
+const CustomHook = () => {
+    const [ count, methods ] = useCounter(0);
+    const [ titleCount, setCount ] = useState(0);
+
+    useDocumentTitle(titleCount);
 
     return <div className="component_layer">
-        <div>{count}</div>
-        <button onClick={() => setCount(count + 1)}>+1</button>
+        <button onClick={() => setCount(titleCount + 1)}>Title++</button>
+        <div>{ count }</div>
+        <button onClick={() => methods.decrement()}>-1</button>
+        <button onClick={() => methods.reset()}>0</button>
+        <button onClick={() => methods.increment()}>+1</button>
     </div>;
 }
 
