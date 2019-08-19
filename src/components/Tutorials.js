@@ -124,18 +124,19 @@ const Tutorials = ({ match }) => {
             UseCustomHook: () => <UseCustomHook />
         }
     }, 
-    { category, item } = match.params;
+    { category, item } = match.params,
+    basepath = "/tutorials ";
 
     const element = (category && item) ?
-                        <Route path={`/tutorials/${category}/${item}`} component={ (menu[category])[item] } /> : 
-                        <div className="component_layer">Select an option to see the results.</div>;
+                        <Route path={`${basepath}/${category}/${item}`} component={ (menu[category])[item] } /> : 
+                        <div className="component_layer">Select an option to see the demo.</div>;
 
     return <div className="component_layer">
         {Object.keys(menu).map((section, i) => <div className="component_layer" key={i} >
             <h5>{section} :</h5>
             <ul>
                 {Object.keys(menu[section]).map((option, j) => <li className="menu_item" key={j}>
-                    <Link to={`/tutorials/${section}/${option}`}>{option}</Link>
+                    <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
                 </li>)}
             </ul>
         </div>)}
