@@ -1,18 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-export default class Header extends React.PureComponent {
-  render() {
-    return (
-      <div className="header">
-        <div className="bounds">
-          <h1 className="header--logo">Header Title</h1>
-          <nav>
-            <Link className="login" to="/login">Log In</Link>
-            <Link className="signup" to="/signup">Sign Up</Link>
-          </nav>
-        </div>
-      </div>
-    );
-  }
-};
+export class Header extends Component {
+    render() {
+        return <header className="header">
+            <nav className="navbar">
+                <div className="navbar_block">
+                </div>
+                <div className="navbar_block">
+                </div>
+                <div className="navbar_block">
+                </div>
+            </nav>
+        </header>;
+    }
+}
+
+export default Header;
+
+// import { NavLink } from 'react-router-dom';
+// <NavLink exact to={item.path}>{item.name}</NavLink>

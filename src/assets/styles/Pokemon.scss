@@ -1,0 +1,41 @@
+.pokemon_container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+
+    h4,
+    h5 {
+        display: inline;
+        text-align: center;
+        margin: 10px 0;
+        text-transform: capitalize;
+    }
+
+    img {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    table {
+        margin: 20px auto;
+        min-width: 250px;
+        max-width: 80%;
+
+        thead,
+        td:first-child {
+            font-weight: 900;
+            text-transform: capitalize;
+        }
+
+        td {
+            padding: 2px 15px;
+        }
+    }
+}
+
+.pokemon_data {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

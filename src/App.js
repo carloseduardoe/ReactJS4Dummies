@@ -5,18 +5,16 @@ import {
     Switch
 } from 'react-router-dom';
 
-import Header        from './components/Header';
-import Public        from './components/Public';
-import Authenticated from './components/Authenticated';
-import TodoList      from './components/TodoList';
-import NotFound      from './components/NotFound';
-import UserSignUp    from './components/UserSignUp';
-import UserSignIn    from './components/UserSignIn';
-import UserSignOut   from './components/UserSignOut';
-import Tutorials     from './components/Tutorials';
+import Header      from './components/Header';
+import Public      from './components/Public';
+import TodoList    from './components/TodoList';
+import NotFound    from './components/NotFound';
+import UserSignUp  from './components/UserSignUp';
+import UserSignIn  from './components/UserSignIn';
+import UserSignOut from './components/UserSignOut';
+import Tutorials   from './components/Tutorials';
 
-import './assets/styles/App.scss';
-import './assets/styles/Auth.css';
+import './assets/styles/styles.scss';
 
 export default class App extends Component {
     render() {
@@ -24,7 +22,6 @@ export default class App extends Component {
             <Header />
             <Switch>
                 <Route exact path = "/"                          component = { Public } />
-                <Route       path = "/safe"                      component = { Authenticated } />
                 <Route       path = "/todos"                     component = { TodoList } />
                 <Route       path = "/login"                     component = { UserSignIn } />
                 <Route       path = "/signup"                    component = { UserSignUp } />
