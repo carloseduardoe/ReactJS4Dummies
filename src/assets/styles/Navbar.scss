@@ -11,27 +11,98 @@
     background-color: color(Royal-Blue);
 }
 
-.navbar_block {
-    box-sizing: border-box;
+.navbar_navigation_list {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    flex: 0 0 auto;
-    padding: 10px;
-    border: 2px solid color(Flirtatious);
+    width: 100vw;
+    height: 100vh;
+    max-height: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: color(Boyzone);
+    transition: max-height $transition-length ease-in-out $transition-delay;
 
-    &:nth-last-child(2){
-        position: absolute;
-        top: 50%;
+    &.expanded {
+        max-height: 100vh;
+    }
+
+    &.expanded ~ .navbar_navigation_toggle {
+        top: 40px;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
+    }
+
+    &.expanded ~ .navbar_navigation_toggle:before {
+        content: '\e951';
     }
 }
 
+.navbar_navigation_toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    color: color(Twinkle-Blue);
+    border: none;
+    transition: color $transition-length ease-in-out $transition-delay,
+                top $transition-length ease-in-out $transition-delay,
+                left $transition-length ease-in-out $transition-delay,
+                max-height $transition-length ease-in-out $transition-delay;
+
+    &:hover {
+        color: lighten(color(Twinkle-Blue), 30%);
+    }
+
+    &:before {
+        content: '\eab8';
+        font-family: 'LineIcons';
+        font-size: 30px;
+    }
+}
+
+.navbar_navigation_item {
+    width: 80%;
+    height: 50px;
+    margin: 10px auto;
+    background-color: color(Boyzone);
+    border-radius: $border-radius-small;
+    transition: background-color $transition-length ease-in-out $transition-delay;
+
+    &:hover {
+        background-color: darken(color(Boyzone), 20%);
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: color(Twinkle-Blue);
+        text-decoration: none;
+        transition: color $transition-length ease-in-out $transition-delay;
+    }
+
+    a:hover {
+        color: lighten(color(Twinkle-Blue), 30%);
+    }
+}
+
+
 .menu_item {
     display: inline-block;
-    color: color(white-smoke);
+    color: color(Twinkle-Blue);
     font-size: 11px;
 
     & a {
@@ -39,7 +110,7 @@
         text-decoration: none;
     }
 
-    &+&::before {
+    & + &::before {
         content: '·';
         margin: 0 5px;
         font-weight: 800;

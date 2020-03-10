@@ -19,7 +19,7 @@ class ActionButton extends Component {
 
     return (
       <div>
-        <button style={style} onClick={()=> this.performAction()}>Action</button>
+        <button style={style} onClick={() => this.performAction()}>Action</button>
         <h6 style={style}>Value is {this.state.value + ""}</h6>
       </div>
     );
