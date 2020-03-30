@@ -5,13 +5,13 @@ const Hero = ({name, alias, children}) => {
     padding: 5,
     margin: 0,
     fontFamily: "Sans-Serif",
-    border: "5px solid gold",
+    border: "5px solid orange",
     fontSize: 15
   };
 
   let spanStyle = {
     marginLeft: 5,
-    color: "gray",
+    color: "gold",
     fontFamily: "Sans-Serif",
     fontSize: 15,
     fontWeight: 400

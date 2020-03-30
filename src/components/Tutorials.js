@@ -48,11 +48,11 @@ const Tutorials = ({ match }) => {
             Hello: () => <Hello name="Carlos" />,
             Hero: () => <Hero name="Diana" alias="Wonder Woman" />,
             HeroAndChildren: () => <Hero name="Bruce" alias="Batman">
-                    <p>child 1</p>
-                    <p>child 2</p>
+                    <br/><p>child 1</p>
+                    <br/><p>child 2</p>
                 </Hero>,
             ActionButton: () => <ActionButton value={false} />,
-            Counter: () => <Counter five={false} />,
+            Counter: () => <Counter increment={1} />,
             EventBindingTypes: () => <EventBindingTypes message="+1" />,
             Parent: () => <Parent name="Parent" />,
             InlineConditionals: () => <InlineConditionals username="Spongebob" loggedIn={true} />,
@@ -129,23 +129,27 @@ const Tutorials = ({ match }) => {
 
     const element = (category && item) ?
                         <Route path={`${basepath}/${category}/${item}`} component={ (menu[category])[item] } /> : 
-                        <div className="component_layer">Select an option to see the demo.</div>;
+                        <div>Select an option to see the demo.</div>;
 
     return <div className="component_layer">
-        <div className="component_layer">
-            {Object.keys(menu).map((section, i) => <div key={i}>
-                <h5>{section} :</h5>
+        <h5>Options</h5>
+        {Object.keys(menu).map((section, i) => 
+            <div className="component_layer"key={i}>
+                <h6>{section}</h6>
                 <ul>
-                    {Object.keys(menu[section]).map((option, j) => <li className="menu_item" key={j}>
-                        <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
-                    </li>)}
+                    {Object.keys(menu[section]).map((option, j) => 
+                        <li className="menu_item" key={j}>
+                            <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
+                        </li>
+                    )}
                 </ul>
-            </div>)}
+            </div>
+        )}
+        <h5>Result</h5>
+        <div className="component_layer">
+            {element}
         </div>
-
-        {element}
     </div>;
 }
 
 export default Tutorials
-

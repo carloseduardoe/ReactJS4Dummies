@@ -5,4 +5,8 @@
     color: color(white);
     background-color: rgba(color(Desire), 0.85);
     border: 2px dashed color(NYC-Taxi);
+
+    ol, ul {
+        padding-left: 15px;
+    }
 }

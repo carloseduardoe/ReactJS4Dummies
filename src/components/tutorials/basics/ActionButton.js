@@ -13,14 +13,11 @@ class ActionButton extends Component {
   }
 
   render() {
-    let style = {
-      display: "inline"
-    };
-
     return (
       <div>
-        <button style={style} onClick={() => this.performAction()}>Action</button>
-        <h6 style={style}>Value is {this.state.value + ""}</h6>
+        <h6>Value is {this.state.value + ""}</h6>
+        <br/>
+        <button onClick={() => this.performAction()}>Toggle</button>
       </div>
     );
   }

@@ -10,7 +10,7 @@ export default class Counter extends Component {
 
   increment() {
     this.setState((prevState) => ({
-      count: prevState.count + 1
+      count: prevState.count + this.props.increment
     }));
   }
 
@@ -23,11 +23,12 @@ export default class Counter extends Component {
   }
 
   render() {
-    let style = {display: "inline"};
     return (
       <div>
-        <button style={style} onClick={() => this.props.five ? this.incrementFive() : this.increment()}>+</button>
-        <h6 style={style}>Count: {this.state.count}</h6>
+        <h6>Count: {this.state.count}</h6>
+        <br/>
+        <button onClick={() => this.increment()}>+{this.props.increment}</button>
+        <button onClick={() => this.incrementFive()}>+5</button>
       </div>
     );
   }
