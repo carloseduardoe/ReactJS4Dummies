@@ -29,10 +29,11 @@ export default class EventBindingTypes extends Component {
   // }
 
   render() {
-    let style = {display: "inline"}
     return (
       <div>
-        <button style={style} onClick={this.clickHandler}>Click</button>
+        <div>{this.state.message}</div>
+        <br/>
+        <button onClick={this.clickHandler}>Concat "{this.props.message.trim()}"</button>
         {/* 
           // Option 2
           <button onClick={() => this.clickHandler()}>Click</button> 
@@ -40,7 +41,6 @@ export default class EventBindingTypes extends Component {
           // Option 3
           <button onClick={this.clickHandler.bind(this)}>Click</button> 
         */}
-        <div style={style}>{this.state.message}</div>
       </div>
     );
   }

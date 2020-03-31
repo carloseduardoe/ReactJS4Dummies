@@ -1,15 +1,11 @@
 import React from 'react'
 
-const Child = ({name, sayHi}) => {
-  let style = {
-    backgroundColor: "gold",
-    padding: 5
-  };
-
+const Child = ({name, callback}) => {
   return (
-    <div style={style}>
-      {name}
-      <button onClick={() => sayHi(name)}>sayHi</button>
+    <div className="component_layer">
+      <div>{name}</div>
+      <br/>
+      <button onClick={() => callback(name)}>Trigger callback</button>
     </div>
   );
 }

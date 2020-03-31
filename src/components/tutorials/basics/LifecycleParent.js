@@ -104,17 +104,16 @@ export default class LifecycleParent extends Component {
 
 	changeState = () => {
 		this.setState({
-			name: 'parent re-rendered'
+			name: 'parent re-rendered, open console to see events'
 		});
 	}
 
 	render() {
-		return (
-			<div>
-				<span>{this.state.name}</span>
-				<button onClick={this.changeState}>Change state</button>
-				{this.props.children}
-			</div>
-		);
+		return <div className="component_layer">
+			<div>{this.state.name}</div>
+			<br/>
+			<button onClick={this.changeState}>Change state</button>
+			{this.props.children}
+		</div>;
 	}
 }

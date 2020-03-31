@@ -53,8 +53,8 @@ const Tutorials = ({ match }) => {
                 </Hero>,
             ActionButton: () => <ActionButton value={false} />,
             Counter: () => <Counter increment={1} />,
-            EventBindingTypes: () => <EventBindingTypes message="+1" />,
-            Parent: () => <Parent name="Parent" />,
+            EventBindingTypes: () => <EventBindingTypes message=" -" />,
+            Parent: () => <Parent name="Joe" />,
             InlineConditionals: () => <InlineConditionals username="Spongebob" loggedIn={true} />,
             ObjectList: () => <ObjectList />,
             Form: () => <Form />,
@@ -138,7 +138,7 @@ const Tutorials = ({ match }) => {
                 <h6>{section}</h6>
                 <ul>
                     {Object.keys(menu[section]).map((option, j) => 
-                        <li className="menu_item" key={j}>
+                        <li className="option_item" key={j}>
                             <Link to={`${basepath}/${section}/${option}`}>{option}</Link>
                         </li>
                     )}
@@ -146,7 +146,7 @@ const Tutorials = ({ match }) => {
             </div>
         )}
         <h5>Result</h5>
-        <div className="component_layer">
+        <div className="component_wrapper">
             {element}
         </div>
     </div>;

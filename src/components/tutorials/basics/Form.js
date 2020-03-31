@@ -6,7 +6,7 @@ export default class Form extends Component {
 		this.state = {
 			username: this.props.username || "",
 			comments: this.props.comments || "",
-			topic: this.props.topic || ""
+			topic: this.props.topic
 		};
 	}
 
@@ -19,39 +19,41 @@ export default class Form extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const {username, comments, topic} = this.state;
-		alert(`${username} ${comments} ${topic}`);
+		alert(`${topic}\n\n"${comments}"\n\n- ${username}`);
 	}
 
 	render() {
 		const { username, comments, topic } = this.state;
 
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div>
+			<form className="component_form" onSubmit={this.handleSubmit}>
+				<div className="input_group">
 					<label>Username</label>
 					<input
 						type="text"
+						placeholder="Type user name"
 						name="username"
 						value={username}
 						onChange={this.handleChange}
 					/>
 				</div>
-				<div>
+				<div className="input_group">
 					<label>Comments</label>
 					<textarea
-						rows="1"
+						rows="5"
+						placeholder="Type Message"
 						name="comments"
 						value={comments}
 						onChange={this.handleChange}
 					/>
 				</div>
-				<div>
+				<div className="input_group">
 					<label>Topic</label>
 					<select name="topic" value={topic} onChange={this.handleChange}>
-						<option hidden disabled></option>
-						<option value="react">React</option>
-						<option value="angular">Angular</option>
-						<option value="vue">Vue</option>
+						<option selected hidden disabled>Select topic</option>
+						<option value="React">React</option>
+						<option value="Angular">Angular</option>
+						<option value="Vue">Vue</option>
 					</select>
 				</div>
 				<button type="submit">Submit</button>

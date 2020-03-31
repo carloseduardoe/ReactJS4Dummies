@@ -35,6 +35,6 @@ export default class LifecycleChild extends Component {
 
   render() {
     console.log('Child render');
-    return <div>{this.state.name}</div>;
+    return <div className="component_layer">{this.state.name}</div>;
   }
 }
