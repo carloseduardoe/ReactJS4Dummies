@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="dummyClass"
+  data-testid="hello_container"
+>
+  <h6
+    data-testid="hello_message"
+  >
+    Hi 
+    Carlos
+    !
+  </h6>
+</div>
+`;
