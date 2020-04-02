@@ -2,8 +2,8 @@ import React from 'react'
 
 const Hello = ({name}) => {
   return (
-    <div className='dummyClass'>
-      <h6>Hello {name}</h6>
+    <div data-testid="hello_container" className="dummyClass">
+      <h6 data-testid="hello_message">Hello {name}</h6>
     </div>
   )
 }
