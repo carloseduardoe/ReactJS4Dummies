@@ -26,6 +26,7 @@ it('renders correctly', () => {
     expect(container.children.length).toBeGreaterThan(0);
     expect(container).toHaveClass('hero-component_container');
     expect(message.children.length).toBe(1);
+    expect(message).toHaveClass('hero-component_message');
     expect(message).toContainHTML(`${name}<span>a.k.a ${alias}</span>`);
 });
 
