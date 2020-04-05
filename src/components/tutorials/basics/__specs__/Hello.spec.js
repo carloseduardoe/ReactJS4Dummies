@@ -8,23 +8,25 @@ import '@testing-library/jest-dom';
 
 afterEach(cleanup);
 
+let name = "Carlos";
+
 it('renders', () => {
-    const div = document.createElement('div');
-    const hello = <Hello name={name}/>;
-    ReactDOM.render(hello, div);
+    ReactDOM.render(
+        <Hello name={name}/>,
+        document.createElement('div')
+    );
 });
 
 it('renders correctly', () => {
-    const name = 'Carlos';
-    const hello = <Hello name={name}/>;
-    const { getByTestId } = render(hello);
+    const { getByTestId } = render(<Hello name={name}/>);
+    const container = getByTestId('hello-component_container'),
+          message = getByTestId('hello-component_message');
 
-    expect(getByTestId('hello_container')).toHaveClass('dummyClass');
-    expect(getByTestId('hello_message')).toHaveTextContent(`Hi ${name}!`);
+    expect(container).toHaveClass('hello-component_container');
+    expect(message).toHaveTextContent(`Hi ${name}!`);
 });
 
 it('matches snapshot', () => {
-    const name = 'Carlos';
     const tree = renderer.create(<Hello name={name}/>).toJSON();
 
     expect(tree).toMatchSnapshot();
