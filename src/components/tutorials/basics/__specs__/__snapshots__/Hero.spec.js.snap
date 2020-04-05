@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`Hero matches snapshot 1`] = `
 <div
   className="hero-component_container"
   data-testid="hero-component_container"

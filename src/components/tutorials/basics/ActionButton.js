@@ -4,7 +4,7 @@ class ActionButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value
+      value: props.initialValue
     };
   }
 
@@ -13,13 +13,11 @@ class ActionButton extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h6>Value is {this.state.value + ""}</h6>
-        <br/>
-        <button onClick={() => this.performAction()}>Toggle</button>
-      </div>
-    );
+    return <div>
+      <h6 data-testid="action-button_message">{`Value is ${this.state.value}`}</h6>
+      <br/>
+      <button data-testid="action-button_button" onClick={() => this.performAction()}>Toggle</button>
+    </div>;
   }
 }
 

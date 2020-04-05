@@ -51,7 +51,7 @@ const Tutorials = ({ match }) => {
                     <br/><p>child 1</p>
                     <br/><p>child 2</p>
                 </Hero>,
-            ActionButton: () => <ActionButton value={false} />,
+            ActionButton: () => <ActionButton initialValue={false} />,
             Counter: () => <Counter increment={1} />,
             EventBindingTypes: () => <EventBindingTypes message=" -" />,
             Parent: () => <Parent name="Joe" />,
