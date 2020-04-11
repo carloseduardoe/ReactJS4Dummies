@@ -18,7 +18,7 @@ import './assets/styles/styles.scss';
 
 export default class App extends Component {
     render() {
-        return <Router>
+        return <div>
             <Header />
             <Switch>
                 <Route exact path = "/"                          component = { Public } />
@@ -30,7 +30,7 @@ export default class App extends Component {
                 <Route       path = "/tutorials"                 component = { Tutorials } />
                 <Route                                           component = { NotFound } />
             </Switch>
-        </Router>;
+        </div>;
     }
 }
         
