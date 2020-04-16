@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ActionButton from '../ActionButton';
+import ActionButton from '../components/tutorials/basics/ActionButton';
 
 import { render, cleanup } from '@testing-library/react';
 import { create, act } from "react-test-renderer";

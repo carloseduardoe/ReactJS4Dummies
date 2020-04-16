@@ -1,37 +1,4 @@
-import React from 'react';
-
-export default (props) => {
-  const {
-    cancel,
-    errors,
-    submit,
-    submitButtonText,
-    elements,
-  } = props;
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    submit();
-  }
-
-  function handleCancel(event) {
-    event.preventDefault();
-    cancel();
-  }
-
-  return (
-    <div>
-      <ErrorsDisplay errors={errors} />
-      <form onSubmit={handleSubmit}>
-        {elements()}
-        <div className="pad-bottom">
-          <button className="button" type="submit">{submitButtonText}</button>
-          <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
-        </div>
-      </form>
-    </div>
-  );
-}
+import React, { Component } from 'react';
 
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;
@@ -50,4 +17,32 @@ function ErrorsDisplay({ errors }) {
   }
 
   return errorsDisplay;
+}
+
+export default class Form extends Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.submit();
+  }
+
+  handleCancel = (e) => {
+    e.preventDefault();
+    this.props.cancel();
+  }
+
+  render() {
+    const { title, errors, submitText, cancelText } = this.props;
+    
+    return <div className="component_layer">
+      <h1 className="form-title">{title}</h1>
+      <ErrorsDisplay errors={errors} />
+      <form onSubmit={this.handleSubmit}>
+        {this.props.children}
+        <div className="pad-bottom">
+          <button className="button" type="submit">{submitText}</button>
+          <button className="button button-secondary" onClick={this.handleCancel}>{cancelText}</button>
+        </div>
+      </form>
+    </div>;
+  }
 }

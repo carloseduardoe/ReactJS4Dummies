@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hero from '../Hero';
+import Hero from '../components/tutorials/basics/Hero';
 
 import { render, cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';

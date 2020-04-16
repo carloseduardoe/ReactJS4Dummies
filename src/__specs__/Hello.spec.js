@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from '../Hello';
+import Hello from '../components/tutorials/basics/Hello';
 
 import { render, cleanup } from '@testing-library/react';
 import { create } from 'react-test-renderer';

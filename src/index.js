@@ -6,10 +6,13 @@ import {
     Route
 } from 'react-router-dom';
 import App from './App';
+import withContext from './helpers/Context';
+
+const contextApp = withContext(App);
 
 ReactDOM.render(
     <Router>
-        <Route component={App}/>
+        <Route component={contextApp}/>
     </Router>,
     document.getElementById('root')
 );
