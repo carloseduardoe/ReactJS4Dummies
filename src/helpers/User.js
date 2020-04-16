@@ -1,8 +1,13 @@
 import Data from './Data';
 
 export default class User {
-  async getUser() {
-    const response = await Data.request(`/users`, 'GET', null);
+  paths = {
+    allUsers: `/users`,
+    currentUser: `/users/whoami`
+  };
+
+  async getCurrentUser() {
+    const response = await Data.request(this.paths.currentUser, 'GET', null);
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -15,7 +20,7 @@ export default class User {
   }
   
   async createUser(user) {
-    const response = await Data.request('/users', 'POST', user);
+    const response = await Data.request(this.paths.allUsers, 'POST', user);
     if (response.status === 201) {
       return [];
     }
