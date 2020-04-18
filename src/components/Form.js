@@ -30,18 +30,43 @@ export default class Form extends Component {
     this.props.cancel();
   }
 
-  render() {
-    const { title, errors, submitText, cancelText } = this.props;
+  buildInput = (config, index) => {
+    let input;
     
-    return <div className="component_layer">
-      <h1 className="form-title">{title}</h1>
+    switch(config.type) {
+      case "textarea":
+        input = <textarea key={index} type="textarea" {...config.attributes}/>;
+        break;
+      case "select":
+        input = <select key={index} type="text" {...config.attributes}>{
+          config.options ? config.options.map((item, index) => 
+            <option key={index} value={item.value} {...item.attributes}>
+              {item.text}
+            </option>
+          ) : null
+        }</select>;
+        break;
+      default:
+        input = <input key={index} type="text" {...config.attributes}/>
+        break;
+    }
+    
+    return input;
+  }
+
+  render() {
+    const { title, errors, submitText, cancelText, fields } = this.props;
+    
+    return <div className="form_layer">
+      <h1 className="form_title">{title}</h1>
       <ErrorsDisplay errors={errors} />
-      <form onSubmit={this.handleSubmit}>
-        {this.props.children}
-        <div className="pad-bottom">
-          <button className="button" type="submit">{submitText}</button>
-          <button className="button button-secondary" onClick={this.handleCancel}>{cancelText}</button>
+      <form className="form_body" onSubmit={this.handleSubmit}>
+        { fields ? fields.map((item, index) => this.buildInput(item, index)) : null }
+        <div className="form_actions">
+          <button type="submit">{submitText}</button>
+          <button onClick={this.handleCancel}>{cancelText}</button>
         </div>
+        {this.props.children}
       </form>
     </div>;
   }

@@ -5,51 +5,112 @@ import Form from './Form';
 export default class UserSignUp extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: '',
-      username: '',
+      email: '',
       password: '',
       errors: []
     };
   }
 
   change = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const el = event.target;
+
+    el.classList.remove("touched");
+    if (el.value) {
+      el.classList.add("touched");
+    }
 
     this.setState(() => {
       return {
-        [name]: value
+        [el.name]: el.value
       };
     });
   }
 
-  submit = (e) => {
-    e.preventDefault();
+  submit = () => {
   }
 
-  cancel = (e) => {
-    e.preventDefault();
+  cancel = () => {
   }
 
   render() {
-    const { name, username, password, errors } = this.state;
+    const { errors } = this.state,
+          fields     = [{
+      type: "text",
+      attributes: {
+        id: "su_name",
+        name: "name",
+        placeholder: "Name",
+        className: "form_text-input",
+        onChange: this.change
+      }
+    },{
+      type: "textarea",
+      attributes: {
+        id: "su_description",
+        name: "description",
+        rows: 7,
+        placeholder: "Enter a description",
+        className: "form_text-input",
+        onChange: this.change
+      }
+    },{
+      type: "text",
+      attributes: {
+        id: "su_mail",
+        name: "email",
+        placeholder: "e-Mail",
+        className: "form_text-input",
+        onChange: this.change
+      }
+    },{
+      type: "password",
+      attributes: {
+        id: "su_password",
+        name: "password",
+        placeholder: "Password",
+        className: "form_text-input",
+        onChange: this.change
+      }
+    },{
+      type: "password",
+      attributes: {
+        id: "su_password_confirm",
+        name: "password_confirm",
+        placeholder: "Re-type Password",
+        className: "form_text-input",
+        onChange: this.change
+      }
+    },{
+      type: "select",
+      attributes: {
+        id: "su_select",
+        name: "type",
+        className: "form_select-input",
+        onChange: this.change
+      },
+      options: [
+        {
+          text: "select account type",
+          value: "", 
+          attributes: {
+            hidden: true
+          }
+        },
+        { text: "A", value: "A" },
+        { text: "B", value: "B" },
+        { text: "C", value: "C" }
+      ]
+    }];
 
     return <div className="component_layer">
       <Form title="Sign Up" submitText="Submit" cancelText="Cancel"
-            errors={errors} submit={this.submit}
-            cancel={this.cancel} >
-        <input id="name" name="name" type="text" placeholder="Name"
-          value={name} onChange={this.change} 
-        />
-        <input id="username" name="username" type="text" placeholder="User Name"
-          value={username} onChange={this.change} 
-        />
-        <input id="password" name="password" type="password" placeholder="Password"
-          value={password} onChange={this.change} 
-        />
+            fields={fields} errors={errors}
+            submit={this.submit} cancel={this.cancel} >
         <p className="form_tip">
-          Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+          Already have an account?<br/><Link to="/signin">click here to sign in!</Link>
         </p>
       </Form>
     </div>;
