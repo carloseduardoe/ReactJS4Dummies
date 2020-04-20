@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 
 function ErrorsDisplay({ errors }) {
-  let errorsDisplay = null;
+  let component = null;
 
   if (errors.length) {
-    errorsDisplay = (
-      <div>
-        <h2 className="validation--errors--label">Validation errors</h2>
-        <div className="validation-errors">
-          <ul>
-            {errors.map((error, i) => <li key={i}>{error}</li>)}
-          </ul>
-        </div>
+    component = (
+      <div className="error-block">
+        <h2 className="error-block_title">Errors</h2>
+        <ul className="error-block_list">
+          {errors.map((error, i) => <li key={i}>{error}</li>)}
+        </ul>
       </div>
     );
   }
 
-  return errorsDisplay;
+  return component;
 }
 
 export default class Form extends Component {
@@ -34,9 +32,6 @@ export default class Form extends Component {
     let input;
     
     switch(config.type) {
-      case "textarea":
-        input = <textarea key={index} type="textarea" {...config.attributes}/>;
-        break;
       case "select":
         input = <select key={index} type="text" {...config.attributes}>{
           config.options ? config.options.map((item, index) => 
@@ -46,6 +41,11 @@ export default class Form extends Component {
           ) : null
         }</select>;
         break;
+
+      case "textarea":
+        input = <textarea key={index} type="textarea" {...config.attributes}/>;
+        break;
+
       default:
         input = <input key={index} type="text" {...config.attributes}/>
         break;
@@ -59,13 +59,17 @@ export default class Form extends Component {
     
     return <div className="form_layer">
       <h1 className="form_title">{title}</h1>
-      <ErrorsDisplay errors={errors} />
+
+      <ErrorsDisplay errors={errors}/>
+
       <form className="form_body" onSubmit={this.handleSubmit}>
         { fields ? fields.map((item, index) => this.buildInput(item, index)) : null }
+
         <div className="form_actions">
           <button type="submit">{submitText}</button>
           <button onClick={this.handleCancel}>{cancelText}</button>
         </div>
+
         {this.props.children}
       </form>
     </div>;
