@@ -1,21 +1,5 @@
 import React, { Component } from 'react';
-
-function ErrorsDisplay({ errors }) {
-  let component = null;
-
-  if (errors.length) {
-    component = (
-      <div className="error-block">
-        <h2 className="error-block_title">Errors</h2>
-        <ul className="error-block_list">
-          {errors.map((error, i) => <li key={i}>{error}</li>)}
-        </ul>
-      </div>
-    );
-  }
-
-  return component;
-}
+import ErrorList from './ErrorList';
 
 export default class Form extends Component {
   handleSubmit = (e) => {
@@ -46,6 +30,10 @@ export default class Form extends Component {
         input = <textarea key={index} type="textarea" {...config.attributes}/>;
         break;
 
+      case "password":
+        input = <input key={index} type="password" {...config.attributes}/>
+        break;
+
       default:
         input = <input key={index} type="text" {...config.attributes}/>
         break;
@@ -60,7 +48,7 @@ export default class Form extends Component {
     return <div className="form_layer">
       <h1 className="form_title">{title}</h1>
 
-      <ErrorsDisplay errors={errors}/>
+      <ErrorList title="Whoops!" errors={errors}/>
 
       <form className="form_body" onSubmit={this.handleSubmit}>
         { fields ? fields.map((item, index) => this.buildInput(item, index)) : null }

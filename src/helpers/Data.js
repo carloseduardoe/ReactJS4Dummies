@@ -2,8 +2,6 @@ import config from '../config';
 
 export default class Data {
   static request(path, method = 'GET', body = null) {
-    const url = config.apiBaseUrl + path;
-  
     const options = {
       method,
       headers: {
@@ -15,6 +13,6 @@ export default class Data {
       options.body = JSON.stringify(body);
     }
 
-    return fetch(url, options);
+    return fetch(path, options);
   }
 }

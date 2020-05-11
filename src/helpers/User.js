@@ -1,13 +1,13 @@
 import Data from './Data';
+import config from '../config';
 
 export default class User {
-  paths = {
-    allUsers: `/users`,
-    currentUser: `/users/whoami`
-  };
+  constructor(properties) {
+    Object.assign(this, properties);
+  }
 
   async getCurrentUser() {
-    const response = await Data.request(this.paths.currentUser, 'GET', null);
+    const response = await Data.request(config.paths.currentUser, 'GET', null);
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -19,18 +19,17 @@ export default class User {
     }
   }
   
-  async createUser(user) {
-    const response = await Data.request(this.paths.allUsers, 'POST', user);
-    if (response.status === 201) {
+  async add() {
+    const response = await Data.request( config.paths.indexUsers, 'POST', { ...this });
+
+    if(response.status == 201)
       return [];
-    }
-    else if (response.status === 400) {
+    
+    if(response.status == 400)
       return response.json().then(data => {
         return data.errors;
       });
-    }
-    else {
-      throw new Error();
-    }
+    
+    throw new Error();
   }
 }
