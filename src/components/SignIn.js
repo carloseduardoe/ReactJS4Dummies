@@ -35,22 +35,24 @@ const SignIn = props => {
                 <Form className="form_body">
                     <label htmlFor="email">e-Mail</label>
                     <Field id="sign_in_email" className="form_text-input" type="email" name="email"/>
-                    <ErrorMessage name="email"/>
+                    <ErrorMessage component="div" className="form_error-display" name="email"/>
                     
                     <label htmlFor="password">Password</label>
                     <Field id="sign_in_password" className="form_text-input" type={passwordType} name="password"/>
-                    <ErrorMessage name="password"/>
+                    <ErrorMessage component="div" className="form_error-display" name="password"/>
+                    
+                    <button onClick={togglePassword}>See Password</button>
 
                     <div className="form_actions">
                         <button type="submit">Sign In</button>
                         <button onClick={cancel}>cancel</button>
                     </div>
+
+                    <p className="form_tip">Don't have an account?<br/>
+                        <Link to="/signup">click here to sign up!</Link>
+                    </p>
                 </Form>
             </Formik>
-            <button onClick={togglePassword}>See Password</button>
-            <p className="form_tip">Don't have an account?<br/>
-                <Link to="/signup">click here to sign up!</Link>
-            </p>
         </div>
     </div>;
 }

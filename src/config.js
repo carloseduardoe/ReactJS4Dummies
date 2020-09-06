@@ -13,6 +13,8 @@ export const Paths = {
 };
 
 export const Strings = {
-    Required: "Required",
-    Format: "Incorrect format"
+    Required: "Required\n",
+    MinLength: "Minimum length is not met\n",
+    MaxLength: "Maximum length reached\n",
+    Format: "Incorrect format\n"
 };
