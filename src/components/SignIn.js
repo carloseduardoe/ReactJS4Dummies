@@ -1,47 +1,81 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Form from './Form';
+import { useFormik } from 'formik';
+import { SignInSchema } from '../services/Validation';
+import { ProcessSignIn } from '../services/Auth';
 
-export default class UserSignIn extends Component {
-    state = {
-        username: '',
-        password: '',
-        errors: [],
-    }
+const SignIn = props => {
+    const initialValues =  {
+        email: '',
+        password: ''
+    };
     
-    render() {
-        const { username, password, errors, } = this.state;
-        
-        return <div className="bounds">
-            <div className="grid-33 centered signin">
-            <h1>Sign In</h1>
-            <Form cancel={this.cancel} errors={errors} submit={this.submit} 
-                  submitButtonText="Sign In" elements={() => (
-                <React.Fragment>
-                <input id="username" name="username" type="text" 
-                       value={username} onChange={this.change} placeholder="User Name" />
-                <input id="password" name="password" type="password" 
-                       value={password} onChange={this.change} placeholder="Password" />
-                </React.Fragment>
-            )} />
-            <p>Don't have a user account? <Link to="/signup">Click here</Link> to sign up!</p>
-            </div>
-        </div>;
-    }
-        
-    change = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        
-        this.setState(() => {
-            return {
-                [name]: value
-            };
-        });
-    }
-    
-    submit = () => {}
-    
-    cancel = () => {}
+    const [passwordType, setPasswordType] = useState("password");
+
+    const togglePassword = e => {
+        e.preventDefault();
+        setPasswordType(
+            passwordType === "password" 
+            ? "text" 
+            : "password"
+        );
+    };
+
+    const onSubmit = values => {
+        console.log("Values", JSON.stringify(values, null, 4));
+        // ProcessSignIn(data);
+    };
+
+    const cancel = () => {
+        props.history.push('/');
+    };
+
+    const validationSchema = SignInSchema;
+
+    const {
+        handleSubmit, getFieldProps,
+        touched, errors
+    } = useFormik({
+        initialValues,
+        onSubmit,
+        validationSchema
+    });
+
+    return <div className="component_layer" >
+        <div className="form_layer">
+            <h1 className="form_title">Sign In</h1>
+            <form className="form_body" onSubmit={handleSubmit}>
+
+                <label htmlFor="email">e-Mail</label>
+                <input id="sign_in_email" className="form_text-input" 
+                    type="email" name="email" { ...getFieldProps('email') }/>
+                {touched.email && errors.email 
+                    ? <div className="form_error-display">{errors.email}</div>
+                    : null
+                }
+                
+                <label htmlFor="password">Password</label>
+                <input id="sign_in_password" className="form_text-input" 
+                    type={passwordType} name="password" { ...getFieldProps('password') }/>
+                {touched.password && errors.password 
+                    ? <div className="form_error-display">{errors.password}</div>
+                    : null
+                }
+
+                <button onClick={togglePassword}>See Password</button>
+
+                <div className="form_actions">
+                    <button type="submit">Sign In</button>
+                    <button onClick={cancel}>cancel</button>
+                </div>
+                
+                <p className="form_tip">Don't have an account?<br/>
+                    <Link to="/signup">click here to sign up!</Link>
+                </p>
+                
+            </form>
+        </div>
+    </div>;
 }
-        
+
+export default SignIn;

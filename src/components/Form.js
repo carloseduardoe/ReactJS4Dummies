@@ -48,7 +48,7 @@ export default class Form extends Component {
     return <div className="form_layer">
       <h1 className="form_title">{title}</h1>
 
-      <ErrorList title="Whoops!" errors={errors}/>
+      <ErrorList title="Oops!" errors={errors}/>
 
       <form className="form_body" onSubmit={this.handleSubmit}>
         { fields ? fields.map((item, index) => this.buildInput(item, index)) : null }

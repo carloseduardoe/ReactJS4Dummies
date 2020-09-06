@@ -58,6 +58,15 @@
     }
 }
 
+.form_error-display {
+    box-sizing: border-box;
+    display: block;
+    width: 80%;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: 200;
+}
+
 .form_actions {
     display: flex;
     flex-flow: row nowrap;
@@ -79,4 +88,30 @@
         color: color(Flirtatious);
         text-decoration: none;
     }
+}
+
+.error-block {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    min-width: 250px;
+    margin: 10px 5px 5px;
+}
+
+.error-block_title {
+    box-sizing: border-box;
+    display: block;
+    width: 80%;
+    margin: 5px;
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.error-block_list {
+    box-sizing: border-box;
+    display: block;
+    width: 80%;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: 200;
 }

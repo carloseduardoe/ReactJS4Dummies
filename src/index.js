@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import {
-    BrowserRouter as Router,
-    Route
-} from 'react-router-dom';
-import App from './App';
-import withContext from './helpers/Context';
 
-const contextApp = withContext(App);
+import App from './App';
+
+import './assets/styles/styles.scss';
 
 ReactDOM.render(
-    <Router>
-        <Route component={contextApp}/>
-    </Router>,
+    <App/>,
     document.getElementById('root')
 );
 

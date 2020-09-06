@@ -1,146 +1,108 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Form from './Form';
-import User from '../helpers/User';
+import { useFormik } from 'formik';
+import { SignUpSchema } from '../services/Validation';
+import { ProcessSignUp } from '../services/Auth';
 
-export default class UserSignUp extends Component {
-  constructor(props) {
-    super(props);
+const SignUp = props => {
+    const initialValues =  {
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        password2: ''
+    };
+    
+    const [passwordType, setPasswordType] = useState("password");
 
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-      errors: []
+    const togglePassword = e => {
+        e.preventDefault();
+        setPasswordType(
+            passwordType === "password" 
+            ? "text" 
+            : "password"
+        );
     };
 
-    this.fields = [{
-      type: "text",
-      attributes: {
-        id: "su_name",
-        name: "name",
-        placeholder: "Name",
-        className: "form_text-input",
-        onChange: this.change
-      }
-    }, {
-      type: "textarea",
-      attributes: {
-        id: "su_description",
-        name: "description",
-        rows: 7,
-        placeholder: "Enter a description",
-        className: "form_text-input",
-        onChange: this.change
-      }
-    }, {
-      type: "text",
-      attributes: {
-        id: "su_mail",
-        name: "email",
-        placeholder: "e-Mail",
-        className: "form_text-input",
-        onChange: this.change
-      }
-    }, {
-      type: "password",
-      attributes: {
-        id: "su_password",
-        name: "password",
-        placeholder: "Password",
-        className: "form_text-input",
-        onChange: this.change
-      }
-    }, {
-      type: "password",
-      attributes: {
-        id: "su_password_confirm",
-        name: "password_confirm",
-        placeholder: "Re-type Password",
-        className: "form_text-input",
-        onChange: this.change
-      }
-    }, {
-      type: "select",
-      attributes: {
-        id: "su_select",
-        name: "type",
-        className: "form_select-input",
-        onChange: this.change
-      },
-      options: [{
-          text: "select account type",
-          value: "",
-          attributes: {
-            hidden: true
-          }
-        },
-        {
-          text: "A",
-          value: "A"
-        },
-        {
-          text: "B",
-          value: "B"
-        },
-        {
-          text: "C",
-          value: "C"
-        }
-      ]
-    }];
-  }
-  
-  change = (event) => {
-    const el = event.target;
+    const onSubmit = values => {
+        console.log("Values", JSON.stringify(values, null, 4));
+        // ProcessSignUp(data);
+    };
 
-    el.classList.remove("touched");
-    if (el.value) {
-      el.classList.add("touched");
-    }
+    const cancel = () => {
+        props.history.push('/');
+    };
 
-    this.setState(() => {
-      return {
-        [el.name]: el.value
-      };
-    });
-  }
+    const validationSchema = SignUpSchema;
 
-  submit = () => {
-    const { context } = this.props;
-    const { name, description, email, password, type } = this.state;
-    const user = new User({
-      name, description, email, password, type
+    const {
+        handleSubmit, getFieldProps,
+        touched, errors
+    } = useFormik({
+        initialValues,
+        onSubmit,
+        validationSchema
     });
 
-    user.add().then(errors => {
-      if (errors.length) {
-        this.setState({ errors });
-      }
-      else {
-        this.props.history.push('/');
-      }
-    }).catch(err => {
-      this.props.history.push('/error');
-    });
-  }
+    return <div className="component_layer" >
+        <div className="form_layer">
+            <h1 className="form_title">Sign Up</h1>
+            <form className="form_body" onSubmit={handleSubmit}>
 
-  cancel = () => {
-    this.props.history.push('/');
-  }
+                <label htmlFor="first_name">First Name</label>
+                <input id="sign_in_first_name" className="form_text-input" 
+                    type="first_name" name="first_name" { ...getFieldProps('first_name') }/>
+                {touched.first_name && errors.first_name 
+                    ? <div className="form_error-display">{errors.first_name}</div>
+                    : null
+                }
 
-  render() {
-    const { errors } = this.state;
+                <label htmlFor="last_name">Last Name</label>
+                <input id="sign_in_last_name" className="form_text-input" 
+                    type="last_name" name="last_name" { ...getFieldProps('last_name') }/>
+                {touched.last_name && errors.last_name 
+                    ? <div className="form_error-display">{errors.last_name}</div>
+                    : null
+                }
 
-    return <div className = "component_layer" >
-      <Form title = "Sign Up" submitText = "Submit" cancelText = "Cancel"
-            submit = { this.submit } cancel = { this.cancel }
-            fields = { this.fields } errors = { errors } >
-        <p className = "form_tip" >
-          Already have an account?<br/>
-          <Link to = "/signin">click here to sign in !</Link>
-        </p>
-      </Form>
+                <label htmlFor="email">e-Mail</label>
+                <input id="sign_in_email" className="form_text-input" 
+                    type="email" name="email" { ...getFieldProps('email') }/>
+                {touched.email && errors.email 
+                    ? <div className="form_error-display">{errors.email}</div>
+                    : null
+                }
+                
+                <label htmlFor="password">Password</label>
+                <input id="sign_in_password" className="form_text-input" 
+                    type={passwordType} name="password" { ...getFieldProps('password') }/>
+                {touched.password && errors.password 
+                    ? <div className="form_error-display">{errors.password}</div>
+                    : null
+                }
+                
+                <label htmlFor="password2">Password Confirmation</label>
+                <input id="sign_in_password2" className="form_text-input" 
+                    type={passwordType} name="password2" { ...getFieldProps('password2') }/>
+                {touched.password2 && errors.password2 
+                    ? <div className="form_error-display">{errors.password2}</div>
+                    : null
+                }
+
+                <button onClick={togglePassword}>Show Passwords</button>
+
+                <div className="form_actions">
+                    <button type="submit">Sign Up</button>
+                    <button onClick={cancel}>cancel</button>
+                </div>
+                
+                <p className="form_tip">Already have an account?<br/>
+                    <Link to="/signin">click here to sign in!</Link>
+                </p>
+                
+            </form>
+        </div>
     </div>;
-  }
 }
+
+export default SignUp;
