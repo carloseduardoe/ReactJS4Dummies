@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://carloseduardoe.github.io/ReactJS4Dummies",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "formik": "^2.1.5",
     "http-proxy-middleware": "^0.19.1",
     "node-sass": "^4.13.1",
